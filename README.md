@@ -1,7 +1,6 @@
 # Hexagonal Library
 
 <p align="center">
-<a href="https://github.com/alexisirala/Hexagonal-library/actions"><img src="https://github.com/alexisirala/Hexagonal-library/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/alexisirala/hexagonal-library"><img src="https://img.shields.io/packagist/dt/alexisirala/hexagonal-library" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/alexisirala/hexagonal-library"><img src="https://img.shields.io/packagist/v/alexisirala/hexagonal-library" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/alexisirala/hexagonal-library"><img src="https://img.shields.io/packagist/l/alexisirala/hexagonal-library" alt="License"></a>
