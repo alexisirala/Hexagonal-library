@@ -2,6 +2,8 @@
 
 namespace App\Domain\Book;
 
+use DateTime;
+
 class Book
 {
     private string $id;
@@ -55,5 +57,18 @@ class Book
     public function getCreatedAt(): ?DateTime
     {
         return $this->createdAt;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'author' => $this->author,
+            'isbn' => $this->isbn,
+            'quantity' => $this->quantity,
+            'created_at' => $this->createdAt ? $this->createdAt->format('Y-m-d\TH:i:s.u\Z') : null,
+            'updated_at' => $this->createdAt ? $this->createdAt->format('Y-m-d\TH:i:s.u\Z') : null,
+        ];
     }
 }
