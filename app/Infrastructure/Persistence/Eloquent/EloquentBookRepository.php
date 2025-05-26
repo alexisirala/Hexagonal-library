@@ -21,7 +21,9 @@ class EloquentBookRepository implements BookRepositoryInterface
 
     public function findAll(): array
     {
-        return BookModel::all()->toArray();
+        return BookModel::all()->map(function ($bookModel) {
+            return $this->toEntity($bookModel);
+        })->toArray();
     }
 
     public function save(Book $book): void

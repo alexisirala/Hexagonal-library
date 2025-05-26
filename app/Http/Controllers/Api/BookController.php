@@ -22,14 +22,19 @@ class BookController extends Controller
         try {
             $books = $this->bookService->getAllBooks();
 
-            // Depuración: Verificar el formato de los datos devueltos
-            \Log::info('Books retrieved:', ['books' => $books]);
             if (empty($books)) {
                 return response()->json(['message' => 'No existen libros'], Response::HTTP_OK);
             }
 
-            return response()->json($books);
+            // Convertir cada libro a array de forma más segura
+            $booksArray = [];
+            foreach ($books as $book) {
+                $booksArray[] = $book->toArray();
+            }
+
+            return response()->json($booksArray);
         } catch (\Exception $e) {
+            \Log::error('Error in index method: ' . $e->getMessage());
             return response()->json(['error' => 'Failed to fetch books', 'details' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
@@ -43,7 +48,7 @@ class BookController extends Controller
                 return response()->json(['error' => 'Book not found'], Response::HTTP_NOT_FOUND);
             }
 
-            return response()->json($book);
+            return response()->json($book->toArray());
         } catch (\Exception $e) {
             return response()->json(['error' => 'Failed to fetch book'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
